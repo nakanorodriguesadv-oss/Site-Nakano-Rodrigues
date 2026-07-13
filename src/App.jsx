@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Scale, Lock, Users, FileText, DollarSign, LogOut, Menu, X,
+  Scale, Lock, Users, DollarSign, LogOut, Menu, X,
   ArrowRight, CheckCircle2, Clock, ShieldCheck, Stamp, Phone
 } from 'lucide-react';
 import {
@@ -151,6 +151,7 @@ async function supabaseSelect(table, accessToken) {
 }
 
 const MESES_ABREV = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+const MESES_COMPLETOS = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
 // Formata datas vindas do Postgres (YYYY-MM-DD...) sem depender de fuso horário
 function formatDataBR(isoDate) {
@@ -192,6 +193,9 @@ export default function EscritorioSite() {
 
   const [session, setSession] = useState(null); // access_token do Supabase Auth
   const [dados, setDados] = useState({ clientes: [], processos: [], despesas: [], recebimentos: [] });
+  const anoAtual = new Date().getFullYear();
+  const [filtroAno, setFiltroAno] = useState(anoAtual);
+  const [filtroMes, setFiltroMes] = useState('todos'); // 'todos' ou '01'..'12'
 
   const [contato, setContato] = useState({ nome: '', email: '', telefone: '', mensagem: '' });
   const [stamped, setStamped] = useState(false);
@@ -380,9 +384,8 @@ export default function EscritorioSite() {
   /* ------------------------- DASHBOARD ------------------------- */
   if (view === 'dashboard') {
     const tabs = [
-      { id: 'clientes', label: 'Carteira de Clientes', icon: Users },
+      { id: 'clientes', label: 'Clientes e Processos', icon: Users },
       { id: 'financeiro', label: 'Financeiro', icon: DollarSign },
-      { id: 'processos', label: 'Processos', icon: FileText },
     ];
     return (
       <div className="min-h-screen w-full flex" style={{ background: C.paper, fontFamily: FONT_BODY }}>
@@ -440,45 +443,48 @@ export default function EscritorioSite() {
             ) : (
             <div className="space-y-4">
               {dados.clientes.map((c) => {
-                const s = statusStyle(c.status);
+                const processosDoCliente = dados.processos.filter((p) => p.cliente_id === c.id);
                 return (
                   <div key={c.id} className="p-5 rounded-sm" style={{ background: '#fff', border: `1px solid ${C.line}` }}>
-                    <div className="flex items-start justify-between gap-4 flex-wrap">
-                      <div>
-                        <h3 className="text-base font-medium" style={{ color: C.ink2 }}>{c.nome}</h3>
-                        <p className="text-sm opacity-70">{c.caso}</p>
-                      </div>
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs shrink-0" style={{ background: s.bg, color: s.text }}>
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ background: s.dot }} /> {c.status}
-                      </span>
-                    </div>
+                    <h3 className="text-base font-medium" style={{ color: C.ink2 }}>{c.nome}</h3>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 mt-4 pt-4" style={{ borderTop: `1px solid ${C.line}` }}>
-                      {c.tipo === 'pf' ? (
-                        <>
-                          <div>
-                            <p className="text-xs uppercase opacity-50">CPF</p>
-                            <p className="text-sm" style={{ fontFamily: FONT_MONO, color: C.ink2 }}>{c.cpf || '—'}</p>
-                          </div>
-                          <div>
-                            <p className="text-xs uppercase opacity-50">RG</p>
-                            <p className="text-sm" style={{ fontFamily: FONT_MONO, color: C.ink2 }}>{c.rg || '—'}</p>
-                          </div>
-                          <div>
-                            <p className="text-xs uppercase opacity-50">Nascimento</p>
-                            <p className="text-sm" style={{ fontFamily: FONT_MONO, color: C.ink2 }}>{formatDataBR(c.data_nascimento)}</p>
-                          </div>
-                        </>
-                      ) : (
+                    {c.tipo === 'pj' && (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2 mt-3 pt-3" style={{ borderTop: `1px solid ${C.line}` }}>
                         <div>
                           <p className="text-xs uppercase opacity-50">CNPJ</p>
                           <p className="text-sm" style={{ fontFamily: FONT_MONO, color: C.ink2 }}>{c.cnpj || '—'}</p>
                         </div>
-                      )}
-                      <div className="col-span-2 sm:col-span-4">
-                        <p className="text-xs uppercase opacity-50">Endereço</p>
-                        <p className="text-sm" style={{ color: C.ink2 }}>{c.endereco || '—'}</p>
+                        <div className="col-span-2 sm:col-span-3">
+                          <p className="text-xs uppercase opacity-50">Endereço</p>
+                          <p className="text-sm" style={{ color: C.ink2 }}>{c.endereco || '—'}</p>
+                        </div>
                       </div>
+                    )}
+
+                    <div className="mt-4 pt-4" style={{ borderTop: `1px solid ${C.line}` }}>
+                      <p className="text-xs uppercase mb-3" style={{ color: C.brass, letterSpacing: '0.1em' }}>Processos</p>
+                      {processosDoCliente.length === 0 ? (
+                        <p className="text-sm opacity-50">Nenhum processo vinculado ainda.</p>
+                      ) : (
+                        <div className="space-y-3">
+                          {processosDoCliente.map((p) => {
+                            const s = statusStyle(p.status);
+                            return (
+                              <div key={p.id} className="p-3 rounded-sm" style={{ background: C.paper, border: `1px solid ${C.line}` }}>
+                                <div className="flex items-start justify-between gap-3 flex-wrap">
+                                  <div>
+                                    <p className="text-sm" style={{ color: C.ink2 }}>{p.tipo_acao || 'Ação não especificada'}</p>
+                                    <p className="text-xs mt-0.5" style={{ fontFamily: FONT_MONO, color: C.ink2, opacity: 0.6 }}>{p.numero} · {p.vara}</p>
+                                  </div>
+                                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs shrink-0" style={{ background: s.bg, color: s.text }}>
+                                    <span className="w-1.5 h-1.5 rounded-full" style={{ background: s.dot }} /> {p.status}
+                                  </span>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
 
                     <p className="text-xs mt-3 text-right" style={{ fontFamily: FONT_MONO, color: C.ink2, opacity: 0.5 }}>Atualizado em {formatDataBR(c.atualizado_em)}</p>
@@ -490,25 +496,64 @@ export default function EscritorioSite() {
           )}
 
           {dashTab === 'financeiro' && (() => {
-            const totalDespesas = dados.despesas.reduce((t, d) => t + Number(d.valor), 0);
-            const hoje = new Date();
-            const chaveMesAtual = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}`;
-            const recebidoMes = dados.recebimentos
-              .filter((r) => r.mes_referencia.slice(0, 7) === chaveMesAtual)
-              .reduce((t, r) => t + Number(r.valor), 0);
-            const saldoMes = recebidoMes - totalDespesas;
-            const clientesAtivos = dados.clientes.filter((c) => c.status !== 'Concluído').length;
-            const chartData = [...dados.recebimentos]
+            const chaveFiltro = filtroMes === 'todos'
+              ? `${filtroAno}`
+              : `${filtroAno}-${filtroMes}`;
+
+            const despesasFiltradas = dados.despesas.filter((d) => d.mes_referencia.slice(0, chaveFiltro.length) === chaveFiltro);
+            const recebimentosFiltrados = dados.recebimentos.filter((r) => r.mes_referencia.slice(0, chaveFiltro.length) === chaveFiltro);
+
+            const totalDespesas = despesasFiltradas.reduce((t, d) => t + Number(d.valor), 0);
+            const totalRecebido = recebimentosFiltrados.reduce((t, r) => t + Number(r.valor), 0);
+            const saldo = totalRecebido - totalDespesas;
+
+            const clientesAtivos = new Set(
+              dados.processos.filter((p) => p.status !== 'Concluído').map((p) => p.cliente_id)
+            ).size;
+
+            // O gráfico mostra a tendência do ano inteiro selecionado, independente do mês escolhido
+            const chartData = dados.recebimentos
+              .filter((r) => r.mes_referencia.slice(0, 4) === `${filtroAno}`)
               .sort((a, b) => a.mes_referencia.localeCompare(b.mes_referencia))
               .map((r) => ({ mes: mesLabel(r.mes_referencia), valor: Number(r.valor) }));
 
+            const anosDisponiveis = Array.from(new Set([
+              anoAtual,
+              ...dados.despesas.map((d) => Number(d.mes_referencia.slice(0, 4))),
+              ...dados.recebimentos.map((r) => Number(r.mes_referencia.slice(0, 4))),
+            ])).sort((a, b) => b - a);
+
             return (
               <div className="space-y-6">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <select
+                    value={filtroMes}
+                    onChange={(e) => setFiltroMes(e.target.value)}
+                    className="px-3 py-2 text-sm rounded-sm outline-none"
+                    style={{ border: `1px solid ${C.line}`, background: '#fff', color: C.ink2 }}
+                  >
+                    <option value="todos">Ano inteiro</option>
+                    {MESES_COMPLETOS.map((nome, i) => (
+                      <option key={nome} value={String(i + 1).padStart(2, '0')}>{nome}</option>
+                    ))}
+                  </select>
+                  <select
+                    value={filtroAno}
+                    onChange={(e) => setFiltroAno(Number(e.target.value))}
+                    className="px-3 py-2 text-sm rounded-sm outline-none"
+                    style={{ border: `1px solid ${C.line}`, background: '#fff', color: C.ink2 }}
+                  >
+                    {anosDisponiveis.map((ano) => (
+                      <option key={ano} value={ano}>{ano}</option>
+                    ))}
+                  </select>
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {[
-                    { label: 'Recebido este mês', valor: `R$ ${recebidoMes.toLocaleString('pt-BR')}`, color: C.sage },
-                    { label: 'Saldo do mês', valor: `R$ ${saldoMes.toLocaleString('pt-BR')}`, color: saldoMes >= 0 ? C.sage : C.burgundy },
-                    { label: 'Despesas do mês', valor: `R$ ${totalDespesas.toLocaleString('pt-BR')}`, color: C.brass },
+                    { label: 'Recebido no período', valor: `R$ ${totalRecebido.toLocaleString('pt-BR')}`, color: C.sage },
+                    { label: 'Saldo do período', valor: `R$ ${saldo.toLocaleString('pt-BR')}`, color: saldo >= 0 ? C.sage : C.burgundy },
+                    { label: 'Despesas do período', valor: `R$ ${totalDespesas.toLocaleString('pt-BR')}`, color: C.brass },
                     { label: 'Clientes ativos', valor: String(clientesAtivos), color: C.brass },
                   ].map((card) => (
                     <div key={card.label} className="p-5 rounded-sm" style={{ background: '#fff', border: `1px solid ${C.line}` }}>
@@ -519,9 +564,9 @@ export default function EscritorioSite() {
                 </div>
 
                 <div className="p-5 rounded-sm" style={{ background: '#fff', border: `1px solid ${C.line}` }}>
-                  <p className="text-sm mb-4" style={{ color: C.ink2, opacity: 0.7 }}>Honorários recebidos por mês</p>
+                  <p className="text-sm mb-4" style={{ color: C.ink2, opacity: 0.7 }}>Honorários recebidos — {filtroAno}</p>
                   {chartData.length === 0 ? (
-                    <p className="text-sm opacity-50">Nenhum recebimento cadastrado ainda (tabela "recebimentos").</p>
+                    <p className="text-sm opacity-50">Nenhum recebimento cadastrado para {filtroAno}.</p>
                   ) : (
                     <ResponsiveContainer width="100%" height={220}>
                       <BarChart data={chartData}>
@@ -536,12 +581,12 @@ export default function EscritorioSite() {
                 </div>
 
                 <div className="p-5 rounded-sm" style={{ background: '#fff', border: `1px solid ${C.line}` }}>
-                  <p className="text-sm mb-4" style={{ color: C.ink2, opacity: 0.7 }}>Despesas cadastradas</p>
-                  {dados.despesas.length === 0 ? (
-                    <p className="text-sm opacity-50">Nenhuma despesa cadastrada ainda (tabela "despesas").</p>
+                  <p className="text-sm mb-4" style={{ color: C.ink2, opacity: 0.7 }}>Despesas do período selecionado</p>
+                  {despesasFiltradas.length === 0 ? (
+                    <p className="text-sm opacity-50">Nenhuma despesa cadastrada para este período.</p>
                   ) : (
                     <div className="divide-y" style={{ borderColor: C.line }}>
-                      {dados.despesas.map((d) => (
+                      {despesasFiltradas.map((d) => (
                         <div key={d.id} className="flex items-center justify-between py-2.5" style={{ borderTop: `1px solid ${C.line}` }}>
                           <span className="text-sm" style={{ color: C.ink2 }}>{d.categoria}</span>
                           <span className="text-sm" style={{ fontFamily: FONT_MONO, color: C.ink2, opacity: 0.7 }}>
@@ -561,27 +606,6 @@ export default function EscritorioSite() {
               </div>
             );
           })()}
-
-          {dashTab === 'processos' && (
-            dados.processos.length === 0 ? (
-              <p className="text-sm opacity-50">Nenhum processo cadastrado ainda. Adicione pelo Table Editor do Supabase (tabela "processos").</p>
-            ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {dados.processos.map((p) => {
-                const s = statusStyle(p.status);
-                return (
-                  <div key={p.id} className="p-5 rounded-sm" style={{ background: '#fff', border: `1px solid ${C.line}` }}>
-                    <p className="text-xs" style={{ fontFamily: FONT_MONO, color: C.ink2, opacity: 0.6 }}>{p.numero}</p>
-                    <p className="text-sm mt-1" style={{ color: C.ink2 }}>{p.vara}</p>
-                    <span className="inline-flex items-center gap-1.5 mt-3 px-2.5 py-1 rounded-full text-xs" style={{ background: s.bg, color: s.text }}>
-                      <span className="w-1.5 h-1.5 rounded-full" style={{ background: s.dot }} /> {p.status}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-            )
-          )}
         </main>
       </div>
     );
