@@ -256,6 +256,81 @@ export default function EscritorioSite() {
     setStamped(true);
   }
 
+  /* ------------------ POLÍTICA DE PRIVACIDADE ------------------ */
+  if (view === 'privacidade') {
+    const secoes = [
+      {
+        titulo: '1. Quem somos',
+        corpo: 'Nakano & Rodrigues Advogados, com sede na Av. Serzedelo Corrêa, 805, Sala 1702 — Batista Campos, Belém/PA, CEP 66033-770, é o controlador dos dados pessoais tratados por meio deste site e do sistema interno do escritório, nos termos da Lei nº 13.709/2018 (LGPD).',
+      },
+      {
+        titulo: '2. Quais dados coletamos',
+        corpo: 'De visitantes do site: os dados informados voluntariamente no formulário de contato (nome, e-mail, telefone e mensagem). De clientes, no sistema interno: nome, tipo (pessoa física ou jurídica), CNPJ e endereço (quando pessoa jurídica) e os dados dos processos vinculados. Não coletamos CPF, RG ou data de nascimento neste sistema. Este site não utiliza cookies de rastreamento ou ferramentas de análise de terceiros.',
+      },
+      {
+        titulo: '3. Para que usamos os dados',
+        corpo: 'Para responder solicitações de contato, prestar consultoria e atuação jurídica, organizar internamente clientes, processos e financeiro do escritório, e cumprir obrigações legais e regulatórias aplicáveis à advocacia.',
+      },
+      {
+        titulo: '4. Base legal',
+        corpo: 'O tratamento se baseia, conforme o caso, na execução de procedimentos preliminares a um contrato (art. 7º, V, da LGPD), no legítimo interesse do escritório para sua organização interna (art. 7º, IX), ou no consentimento fornecido ao preencher o formulário de contato (art. 7º, I).',
+      },
+      {
+        titulo: '5. Com quem compartilhamos',
+        corpo: 'Não vendemos nem compartilhamos dados com terceiros para fins comerciais. Podemos compartilhar informações com órgãos do Poder Judiciário, tribunais e autoridades quando necessário à atuação processual, e com prestadores de infraestrutura (hospedagem e banco de dados) que seguem padrões adequados de segurança.',
+      },
+      {
+        titulo: '6. Como protegemos os dados',
+        corpo: 'O acesso à área restrita é protegido por autenticação, e o banco de dados aplica controle de acesso por usuário — apenas sócios e equipe autorizados conseguem visualizar as informações dos clientes.',
+      },
+      {
+        titulo: '7. Por quanto tempo guardamos os dados',
+        corpo: 'Os dados são mantidos enquanto durar a relação contratual e pelo prazo necessário ao cumprimento de obrigações legais, incluindo prazos prescricionais aplicáveis a cada caso.',
+      },
+      {
+        titulo: '8. Seus direitos',
+        corpo: 'Nos termos do art. 18 da LGPD, você pode solicitar a confirmação da existência de tratamento, acesso, correção de dados incompletos ou desatualizados, eliminação de dados desnecessários, portabilidade, informação sobre compartilhamento e a revogação do consentimento, quando aplicável.',
+      },
+      {
+        titulo: '9. Como exercer seus direitos',
+        corpo: 'Entre em contato pelo e-mail nakanorodriguesadv@gmail.com ou pelo endereço indicado no início desta página.',
+      },
+      {
+        titulo: '10. Alterações desta política',
+        corpo: 'Esta política pode ser atualizada periodicamente. A data da última atualização está indicada no topo desta página.',
+      },
+    ];
+    return (
+      <div className="min-h-screen w-full" style={{ background: C.paper, fontFamily: FONT_BODY, color: C.ink2 }}>
+        {fontImports}
+        <header className="sticky top-0 z-20" style={{ background: C.ink }}>
+          <div className="max-w-5xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+            <button onClick={() => setView('public')}>
+              <img src={LOGO_LIGHT} alt="Nakano & Rodrigues Advogados" className="h-9 w-auto" />
+            </button>
+          </div>
+        </header>
+        <section className="px-5 md:px-8 py-16 md:py-20">
+          <div className="max-w-2xl mx-auto">
+            <button onClick={() => setView('public')} className="text-sm mb-8 opacity-60 hover:opacity-100 transition">
+              ← Voltar ao site
+            </button>
+            <h1 style={{ fontFamily: FONT_DISPLAY }} className="text-3xl mb-2">Política de Privacidade</h1>
+            <p className="text-xs mb-10" style={{ fontFamily: FONT_MONO, opacity: 0.5 }}>Última atualização: julho de 2026</p>
+            <div className="space-y-8">
+              {secoes.map((s) => (
+                <div key={s.titulo}>
+                  <h2 className="text-base font-medium mb-2" style={{ color: C.ink2 }}>{s.titulo}</h2>
+                  <p className="text-sm opacity-70 leading-relaxed">{s.corpo}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   /* --------------------------- LOGIN --------------------------- */
   if (view === 'login') {
     return (
@@ -774,9 +849,14 @@ export default function EscritorioSite() {
       <footer className="px-5 md:px-8 py-10" style={{ background: C.ink }}>
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs" style={{ color: C.paper, opacity: 0.6 }}>
           <p>© 2026 Nakano & Rodrigues Advogados · Av. Serzedelo Corrêa, 805, Sala 1702 — Batista Campos, Belém/PA, CEP 66033-770 · nakanorodriguesadv@gmail.com · Atendimento: segunda a sexta, das 8h às 18h</p>
-          <button onClick={() => setView('login')} className="flex items-center gap-1.5 hover:opacity-100">
-            <Lock size={12} /> Portal do cliente e da equipe
-          </button>
+          <div className="flex items-center gap-4 shrink-0">
+            <button onClick={() => setView('privacidade')} className="hover:opacity-100">
+              Política de Privacidade
+            </button>
+            <button onClick={() => setView('login')} className="flex items-center gap-1.5 hover:opacity-100">
+              <Lock size={12} /> Portal do cliente e da equipe
+            </button>
+          </div>
         </div>
       </footer>
     </div>
