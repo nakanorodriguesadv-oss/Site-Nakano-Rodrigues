@@ -128,6 +128,7 @@ const EQUIPE = [
 --------------------------------------------------------- */
 const SUPABASE_URL = 'https://mdaseywjzekmzcpqfeaf.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_b3CnodU_8mfi4XbqjIvWcA_ogW3_vq2';
+const WEB3FORMS_ACCESS_KEY = 'aaf4ba78-3423-45f4-91cc-83747fa5ff98';
 
 async function supabaseLogin(email, senha) {
   const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
@@ -199,6 +200,8 @@ export default function EscritorioSite() {
 
   const [contato, setContato] = useState({ nome: '', email: '', telefone: '', mensagem: '' });
   const [stamped, setStamped] = useState(false);
+  const [enviando, setEnviando] = useState(false);
+  const [erroEnvio, setErroEnvio] = useState('');
   const [protocolo] = useState(gerarProtocolo);
 
   const fontImports = (
@@ -251,9 +254,31 @@ export default function EscritorioSite() {
     window.scrollTo(0, 0);
   }
 
-  function handleContatoSubmit() {
+  async function handleContatoSubmit() {
     if (!contato.nome || !contato.email || !contato.mensagem) return;
-    setStamped(true);
+    setErroEnvio('');
+    setEnviando(true);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: 'Nova solicitação de consulta — site Nakano & Rodrigues',
+          nome: contato.nome,
+          email: contato.email,
+          telefone: contato.telefone,
+          mensagem: contato.mensagem,
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || 'Falha ao enviar.');
+      setStamped(true);
+    } catch (err) {
+      setErroEnvio('Não foi possível enviar agora. Tente novamente em instantes ou ligue para o escritório.');
+    } finally {
+      setEnviando(false);
+    }
   }
 
   /* ------------------ POLÍTICA DE PRIVACIDADE ------------------ */
@@ -821,8 +846,14 @@ export default function EscritorioSite() {
                 <textarea value={contato.mensagem} onChange={(e) => setContato({ ...contato, mensagem: e.target.value })}
                   rows={4} className="w-full mt-1 px-3 py-2 text-sm rounded-sm outline-none resize-none" style={{ border: `1px solid ${C.line}` }} />
               </div>
-              <button onClick={handleContatoSubmit} className="px-5 py-3 rounded-sm text-sm font-medium" style={{ background: C.ink, color: C.paper }}>
-                Enviar solicitação
+              {erroEnvio && <p className="text-xs" style={{ color: C.burgundy }}>{erroEnvio}</p>}
+              <button
+                onClick={handleContatoSubmit}
+                disabled={enviando}
+                className="px-5 py-3 rounded-sm text-sm font-medium"
+                style={{ background: C.ink, color: C.paper, opacity: enviando ? 0.7 : 1 }}
+              >
+                {enviando ? 'Enviando...' : 'Enviar solicitação'}
               </button>
             </div>
           ) : (
