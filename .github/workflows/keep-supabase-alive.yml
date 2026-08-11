@@ -1,0 +1,16 @@
+name: Keep Supabase Alive
+
+on:
+  schedule:
+    - cron: '0 12 */3 * *'
+  workflow_dispatch: {}
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fazer uma leitura simples no banco
+        run: |
+          curl -s -o /dev/null -w "Status: %{http_code}\n" \
+            -H "apikey: sb_publishable_b3CnodU_8mfi4XbqjIvWcA_ogW3_vq2" \
+            "https://mdaseywjzekmzcpqfeaf.supabase.co/rest/v1/clientes?select=id&limit=1"
