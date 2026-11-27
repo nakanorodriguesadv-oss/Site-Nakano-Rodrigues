@@ -1,13 +1,480 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nakano & Rodrigues Advogados</title>
-    <meta name="description" content="Escritório de advocacia — Tributário, Trabalhista, Cível, Direito do Servidor Público e Direito Administrativo." />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nakano &amp; Rodrigues · Sociedade de Advogados · Belém/PA</title>
+<meta name="description" content="Nakano &amp; Rodrigues Sociedade de Advogados, em Belém/PA. Tributário, Trabalhista, Cível, Direito do Servidor Público e Direito Administrativo.">
+<meta name="theme-color" content="#121619">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Nakano &amp; Rodrigues · Sociedade de Advogados">
+<meta property="og:description" content="Todo processo tem começo, meio e resolução. Belém/PA.">
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/gelasio-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/lato-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/pagina.css">
+<script src="js/inicio.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Nakano & Rodrigues Sociedade de Advogados",
+  "taxID": "69.987.347/0001-76",
+  "email": "nakanorodriguesadv@gmail.com",
+  "telephone": "+55 91 98631-0721",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Belém",
+    "addressRegion": "PA",
+    "addressCountry": "BR"
+  },
+  "areaServed": "Belém/PA",
+  "openingHours": "Mo-Fr 08:00-18:00",
+  "founder": [
+    {"@type": "Person", "name": "Vitor Nakano dos Reis"},
+    {"@type": "Person", "name": "José Alberto Pinto da Costa Rodrigues Pereira"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="nr" viewBox="40 40 1902 1176">
+    <path class="nr-l" d="M43 1213V43h116l649 984h7V43h105v1170H804L155 229h-6v984z"/>
+    <rect class="nr-b" x="1081" y="43" width="41" height="1170"/>
+    <path class="nr-l" fill-rule="evenodd" d="M1283 43h387c110 7 168 137 168 305s-58 302-168 309h-168v5l436 517-40 34h-70L1395 702h-6v511h-106zM1389 149h281c40 11 62 101 62 199s-22 192-67 203h-276z"/>
+  </symbol>
+  <symbol id="zap" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.99-1.23-.73-.66-1.23-1.47-1.37-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.06 0 1.21.88 2.38 1 2.55.12.16 1.74 2.66 4.21 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></symbol>
+  <symbol id="seta" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="topo" id="topo">
+  <a class="marca" href="#inicio" aria-label="Nakano &amp; Rodrigues, início">
+    <svg class="marca-nr" aria-hidden="true"><use href="#nr"/></svg>
+    <span class="marca-nome">
+      <span class="marca-n">Nakano &amp; Rodrigues</span>
+      <span class="marca-s">Sociedade de Advogados</span>
+    </span>
+  </a>
+  <nav class="menu" aria-label="Principal">
+    <a href="#atendimento">Atendimento</a>
+    <a href="#atuacao">Atuação</a>
+    <a href="#socios">Sócios</a>
+    <a href="#perguntas">Perguntas</a>
+    <a class="menu-cta" href="#consulta">Fale com o escritório</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ABERTURA -->
+  <section class="abre" id="inicio">
+    <div class="abre-fundo" aria-hidden="true"></div>
+    <picture class="abre-foto-cena">
+      <source media="(max-width: 760px)" srcset="img/abertura-socios-cel.webp" width="1024" height="1024">
+      <img class="abre-cena" src="img/abertura-socios.webp" srcset="img/abertura-socios-900.webp 900w, img/abertura-socios.webp 1536w" sizes="100vw" width="1536" height="1024" alt="Os sócios Vitor Nakano dos Reis e José Alberto Pinto da Costa Rodrigues Pereira, sorrindo, no escritório" fetchpriority="high">
+    </picture>
+    <div class="abre-veu" aria-hidden="true"></div>
+    <div class="abre-grade">
+      <div class="abre-texto">
+        <p class="rotulo rotulo-claro"><span class="traco"></span>Sociedade de Advogados · Belém/PA</p>
+        <h1 class="abre-titulo" id="titulo">
+          <span class="l">Todo processo tem</span>
+          <span class="l">começo, meio e</span>
+          <span class="l l2">resolução.</span>
+        </h1>
+        <p class="abre-sub">Acompanhamos cada caso do primeiro contato até a decisão final, com clareza sobre prazos, custos e próximos passos.</p>
+        <div class="abre-botoes">
+          <a class="btn btn-ouro" href="#consulta">Qual é o seu caso? <svg aria-hidden="true"><use href="#seta"/></svg></a>
+          <a class="btn btn-linha" href="#atuacao">Áreas de atuação</a>
+        </div>
+      </div>
+    </div>
+    <p class="abre-legenda">
+      <span class="leg leg-v"><span class="leg-cargo">Sócio</span><span class="leg-nome">Vitor Nakano dos Reis</span><span class="leg-oab">OAB/PA nº 39.983</span></span>
+      <span class="leg leg-j"><span class="leg-cargo">Sócio</span><span class="leg-nome">José Alberto Pinto da Costa Rodrigues Pereira</span><span class="leg-oab">OAB/PA nº 40.892</span></span>
+    </p>
+  </section>
+
+  <!-- APRESENTAÇÃO (texto acende com a rolagem) -->
+  <section class="apresenta" aria-label="O escritório">
+    <div class="apresenta-grade">
+      <div class="apresenta-texto">
+        <p class="rotulo"><span class="traco"></span>O escritório</p>
+        <p class="acende" id="acende">O Nakano &amp; Rodrigues é uma sociedade de advogados de Belém. Atuamos em Tributário, Trabalhista, Cível, Direito do Servidor Público e Direito Administrativo, e acompanhamos cada caso do primeiro contato até a decisão final, com clareza sobre prazos, custos e próximos passos.</p>
+      </div>
+      <div class="colagem" aria-hidden="true">
+        <figure class="col-a rv"><img src="img/detalhe-mesa.webp" width="1200" height="800" loading="lazy" alt=""></figure>
+        <figure class="col-b rv"><img src="img/detalhe-processo.webp" width="760" height="950" loading="lazy" alt=""></figure>
+        <figure class="col-c rv"><img src="img/detalhe-estante.webp" width="760" height="950" loading="lazy" alt=""></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMEÇO, MEIO E RESOLUÇÃO -->
+  <section class="proc" id="atendimento">
+    <div class="proc-trilho" id="trilho">
+      <div class="proc-fixo">
+        <div class="proc-cabeca">
+          <p class="rotulo"><span class="num">01</span><span class="traco"></span>Atendimento</p>
+          <div>
+            <h2 class="titulo-grande">Do primeiro contato <span class="t2">à decisão final.</span></h2>
+            <p class="proc-intro">Você sabe em que pé está o seu caso em cada etapa. Sem juridiquês, com os próximos passos explicados antes de acontecerem.</p>
+          </div>
+        </div>
+        <div class="proc-corpo">
+        <div class="proc-linha" aria-hidden="true"><span class="proc-enche"></span></div>
+        <ol class="proc-etapas">
+          <li class="etapa" data-i="0">
+            <span class="etapa-ponto" aria-hidden="true"></span>
+            <span class="etapa-num">01</span>
+            <h3 class="etapa-palavra">Começo</h3>
+            <p class="etapa-sub">Primeiro contato</p>
+            <p class="etapa-txt">Você conta a sua situação pelo site, pelo WhatsApp ou por e-mail. Lemos com atenção e respondemos indicando o que é preciso para avaliar o caso.</p>
+          </li>
+          <li class="etapa" data-i="1">
+            <span class="etapa-ponto" aria-hidden="true"></span>
+            <span class="etapa-num">02</span>
+            <h3 class="etapa-palavra">Meio</h3>
+            <p class="etapa-sub">Análise e condução</p>
+            <p class="etapa-txt">Estudamos os documentos, explicamos os caminhos possíveis em linguagem simples e conduzimos o caso, informando você a cada etapa.</p>
+          </li>
+          <li class="etapa" data-i="2">
+            <span class="etapa-ponto" aria-hidden="true"></span>
+            <span class="etapa-num">03</span>
+            <h3 class="etapa-palavra">Resolução</h3>
+            <p class="etapa-sub">Até a decisão final</p>
+            <p class="etapa-txt">Acompanhamos o processo até o fim, com clareza sobre prazos e próximos passos, para que você nunca fique sem saber em que pé está.</p>
+          </li>
+        </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · ÁREAS DE ATUAÇÃO (sumário) -->
+  <section class="areas bloco-escuro" id="atuacao">
+    <div class="sec-cabeca sec-cabeca-escura rv">
+      <p class="rotulo rotulo-claro"><span class="num">02</span><span class="traco"></span>Áreas de atuação</p>
+      <div>
+        <h2 class="titulo-grande">Onde <span class="t2">atuamos.</span></h2>
+        <p class="sec-intro">Toque numa área e escolha o tema. O WhatsApp do escritório abre com a sua pergunta pronta.</p>
+      </div>
+    </div>
+
+    <div class="sumario" id="sumario">
+      <details class="area rv" name="area" id="area-tributario" data-assunto="Tributário">
+        <summary>
+          <span class="area-num">01</span>
+          <span class="area-nome">Tributário</span>
+          <span class="area-pontos" aria-hidden="true"></span>
+          <span class="area-qtd">2 temas</span>
+          <span class="area-mais" aria-hidden="true"></span>
+        </summary>
+        <div class="area-corpo">
+          <p class="area-desc">Planejamento e contencioso em tributos federais, estaduais e municipais.</p>
+          <ul class="temas">
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Meu%20IPTU%20veio%20errado%20ou%20alto%20demais%0A%2AAssunto%3A%2A%20Tribut%C3%A1rio%20%C2%B7%20Revis%C3%A3o%20e%20contesta%C3%A7%C3%A3o%20de%20IPTU" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Revisão e contestação de IPTU</span><span class="tema-perg">“Meu IPTU veio errado ou alto demais”</span></span></a></li>
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Quero%20a%20restitui%C3%A7%C3%A3o%20do%20Imposto%20de%20Renda%0A%2AAssunto%3A%2A%20Tribut%C3%A1rio%20%C2%B7%20Restitui%C3%A7%C3%A3o%20de%20Imposto%20de%20Renda%20%28IRPF%29" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Restituição de Imposto de Renda (IRPF)</span><span class="tema-perg">“Quero a restituição do Imposto de Renda”</span></span></a></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="area rv" name="area" id="area-trabalhista" data-assunto="Trabalhista">
+        <summary>
+          <span class="area-num">02</span>
+          <span class="area-nome">Trabalhista</span>
+          <span class="area-pontos" aria-hidden="true"></span>
+          <span class="area-qtd">1 tema</span>
+          <span class="area-mais" aria-hidden="true"></span>
+        </summary>
+        <div class="area-corpo">
+          <p class="area-desc">Reclamações, acordos e adequação de rotinas trabalhistas.</p>
+          <ul class="temas">
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Minhas%20verbas%20rescis%C3%B3rias%20foram%20pagas%20errado%0A%2AAssunto%3A%2A%20Trabalhista%20%C2%B7%20Reclama%C3%A7%C3%A3o%20trabalhista%20por%20verbas%20rescis%C3%B3rias%20pagas%20de%20forma%20errada" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Reclamação trabalhista por verbas rescisórias pagas de forma errada</span><span class="tema-perg">“Minhas verbas rescisórias foram pagas errado”</span></span></a></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="area rv" name="area" id="area-civel" data-assunto="Cível">
+        <summary>
+          <span class="area-num">03</span>
+          <span class="area-nome">Cível</span>
+          <span class="area-pontos" aria-hidden="true"></span>
+          <span class="area-qtd">4 temas</span>
+          <span class="area-mais" aria-hidden="true"></span>
+        </summary>
+        <div class="area-corpo">
+          <p class="area-desc">Contratos, responsabilidade civil e disputas patrimoniais.</p>
+          <ul class="temas">
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Quero%20regularizar%20o%20meu%20im%C3%B3vel%20por%20usucapi%C3%A3o%0A%2AAssunto%3A%2A%20C%C3%ADvel%20%C2%B7%20Usucapi%C3%A3o%20judicial%20e%20extrajudicial" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Usucapião judicial e extrajudicial</span><span class="tema-perg">“Quero regularizar o meu imóvel por usucapião”</span></span></a></li>
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Sofri%20um%20preju%C3%ADzo%20e%20quero%20saber%20se%20tenho%20direito%20a%20indeniza%C3%A7%C3%A3o%0A%2AAssunto%3A%2A%20C%C3%ADvel%20%C2%B7%20Responsabilidade%20civil%20%28danos%20materiais%20e%20morais%29" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Responsabilidade civil (danos materiais e morais)</span><span class="tema-perg">“Sofri um prejuízo e quero saber se tenho direito a indenização”</span></span></a></li>
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Tive%20problema%20com%20plano%20de%20sa%C3%BAde%20ou%20com%20um%20produto%0A%2AAssunto%3A%2A%20C%C3%ADvel%20%C2%B7%20Direito%20do%20consumidor%20%28planos%20de%20sa%C3%BAde%2C%20produtos%20com%20defeito%29" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Direito do consumidor (planos de saúde, produtos com defeito)</span><span class="tema-perg">“Tive problema com plano de saúde ou com um produto”</span></span></a></li>
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Estou%20com%20d%C3%ADvidas%20que%20n%C3%A3o%20consigo%20pagar%0A%2AAssunto%3A%2A%20C%C3%ADvel%20%C2%B7%20A%C3%A7%C3%A3o%20de%20superendividamento" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Ação de superendividamento</span><span class="tema-perg">“Estou com dívidas que não consigo pagar”</span></span></a></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="area rv" name="area" id="area-servidor" data-assunto="Direito do Servidor Público">
+        <summary>
+          <span class="area-num">04</span>
+          <span class="area-nome">Direito do Servidor Público</span>
+          <span class="area-pontos" aria-hidden="true"></span>
+          <span class="area-qtd">3 temas</span>
+          <span class="area-mais" aria-hidden="true"></span>
+        </summary>
+        <div class="area-corpo">
+          <p class="area-desc">Direitos funcionais, remuneratórios e disciplinares de servidores públicos.</p>
+          <ul class="temas">
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Sou%20servidor%20e%20n%C3%A3o%20recebo%20as%20minhas%20horas%20extras%0A%2AAssunto%3A%2A%20Direito%20do%20Servidor%20P%C3%BAblico%20%C2%B7%20Horas%20extras%20n%C3%A3o%20pagas" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Horas extras não pagas</span><span class="tema-perg">“Sou servidor e não recebo as minhas horas extras”</span></span></a></li>
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Sou%20servidor%20e%20quero%20revisar%20a%20minha%20remunera%C3%A7%C3%A3o%20ou%20progress%C3%A3o%0A%2AAssunto%3A%2A%20Direito%20do%20Servidor%20P%C3%BAblico%20%C2%B7%20Revis%C3%A3o%20de%20remunera%C3%A7%C3%A3o%20e%20progress%C3%A3o%20funcional" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Revisão de remuneração e progressão funcional</span><span class="tema-perg">“Sou servidor e quero revisar a minha remuneração ou progressão”</span></span></a></li>
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Quero%20revisar%20o%20meu%20PASEP%0A%2AAssunto%3A%2A%20Direito%20do%20Servidor%20P%C3%BAblico%20%C2%B7%20Revis%C3%A3o%20do%20PASEP" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Revisão do PASEP</span><span class="tema-perg">“Quero revisar o meu PASEP”</span></span></a></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="area rv" name="area" id="area-administrativo" data-assunto="Direito Administrativo">
+        <summary>
+          <span class="area-num">05</span>
+          <span class="area-nome">Direito Administrativo</span>
+          <span class="area-pontos" aria-hidden="true"></span>
+          <span class="area-qtd">1 tema</span>
+          <span class="area-mais" aria-hidden="true"></span>
+        </summary>
+        <div class="area-corpo">
+          <p class="area-desc">Licitações, contratos administrativos e atuação perante a Administração Pública.</p>
+          <ul class="temas">
+            <li><a class="tema" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o.%0A%0A%2ASitua%C3%A7%C3%A3o%3A%2A%20Preciso%20contestar%20um%20ato%20da%20Administra%C3%A7%C3%A3o%20P%C3%BAblica%0A%2AAssunto%3A%2A%20Direito%20Administrativo%20%C2%B7%20Mandado%20de%20seguran%C3%A7a%20contra%20atos%20da%20Administra%C3%A7%C3%A3o%20P%C3%BAblica" target="_blank" rel="noopener"><span class="tema-txt"><span class="tema-nome">Mandado de segurança contra atos da Administração Pública</span><span class="tema-perg">“Preciso contestar um ato da Administração Pública”</span></span></a></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+    <p class="areas-pe rv"><a class="link-seta link-claro" href="#consulta">Outro assunto? Conte do seu jeito<svg aria-hidden="true"><use href="#seta"/></svg></a></p>
+  </section>
+
+  <!-- 03 · SÓCIOS -->
+  <section class="socios" id="socios">
+    <div class="sec-cabeca rv">
+      <p class="rotulo"><span class="num">03</span><span class="traco"></span>Sócios</p>
+      <div>
+        <h2 class="titulo-grande">Quem conduz <span class="t2">o seu caso.</span></h2>
+      </div>
+    </div>
+
+    <div class="socios-grade">
+      <article class="socio rv">
+        <div class="socio-foto">
+          <img src="img/socio-vitor.webp" width="720" height="900" loading="lazy" alt="Vitor Nakano dos Reis, sorrindo, de terno cinza">
+        </div>
+        <p class="socio-cargo">Sócio · Advogado</p>
+        <div class="socio-linha">
+          <h3 class="socio-nome">Vitor Nakano dos Reis</h3>
+          <span class="socio-oab">OAB/PA nº 39.983</span>
+        </div>
+        <p class="socio-bio">Pós-graduando em Direito Tributário pela PUC-SP e graduado pelo Centro Universitário do Estado do Pará (CESUPA).</p>
+      </article>
+
+      <article class="socio socio-2 rv">
+        <div class="socio-foto">
+          <img src="img/socio-jose.webp" width="720" height="900" loading="lazy" alt="José Alberto Pinto da Costa Rodrigues Pereira, de terno escuro e gravata azul">
+        </div>
+        <p class="socio-cargo">Sócio · Advogado</p>
+        <div class="socio-linha">
+          <h3 class="socio-nome">José Alberto Pinto da Costa Rodrigues Pereira</h3>
+          <span class="socio-oab">OAB/PA nº 40.892</span>
+        </div>
+        <p class="socio-bio">Especialista em Direito Público e em Processo Tributário pela Faculdade Líbano e graduado pela Universidade Federal do Pará (UFPA).</p>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- 04 · QUAL É O SEU CASO? (triagem) -->
+  <section class="consulta" id="consulta">
+    <div class="consulta-grade">
+      <div class="consulta-texto rv">
+        <p class="rotulo"><span class="num">04</span><span class="traco"></span>Fale com o escritório</p>
+        <h2 class="titulo-grande">Qual é <span class="t2">o seu caso?</span></h2>
+        <p class="sec-intro">Conte em três passos. A conversa abre no WhatsApp do escritório com a mensagem pronta, e respondemos indicando o que é preciso para avaliar o caso.</p>
+        <dl class="contato">
+          <div>
+            <dt>WhatsApp</dt>
+            <dd><a class="link-zap" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#zap"/></svg>(91) 98631-0721</a></dd>
+          </div>
+          <div>
+            <dt>Atendimento</dt>
+            <dd>Belém/PA<br><span class="contato-hora">Segunda a sexta, das 8h às 18h</span></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="triagem rv" id="triagem">
+        <div class="tri-topo">
+          <span class="tri-passo" id="triPasso">1/3</span>
+          <span class="tri-barra" aria-hidden="true"><span id="triBarra"></span></span>
+        </div>
+
+        <fieldset class="tri-etapa ativa" data-etapa="1">
+          <legend class="tri-perg">Sobre qual assunto você precisa de orientação?</legend>
+          <div class="chips" id="chipsAssunto">
+            <label class="chip"><input type="radio" name="assunto" value="Tributário"><span>Tributário</span></label>
+            <label class="chip"><input type="radio" name="assunto" value="Trabalhista"><span>Trabalhista</span></label>
+            <label class="chip"><input type="radio" name="assunto" value="Cível"><span>Cível</span></label>
+            <label class="chip"><input type="radio" name="assunto" value="Direito do Servidor Público"><span>Direito do Servidor Público</span></label>
+            <label class="chip"><input type="radio" name="assunto" value="Direito Administrativo"><span>Direito Administrativo</span></label>
+            <label class="chip"><input type="radio" name="assunto" value="Ainda não sei"><span>Ainda não sei</span></label>
+          </div>
+          <p class="tri-tema" id="triTema" hidden>Tema: <strong id="triTemaNome"></strong> <button type="button" class="tri-tirar" id="triTirarTema">tirar</button></p>
+          <div class="tri-acoes">
+            <button type="button" class="btn btn-ouro" data-ir="2" id="tri1" disabled>Continuar <svg aria-hidden="true"><use href="#seta"/></svg></button>
+          </div>
+        </fieldset>
+
+        <fieldset class="tri-etapa" data-etapa="2">
+          <legend class="tri-perg">Conte em poucas linhas o que aconteceu.</legend>
+          <label class="campo">
+            <span class="campo-rot">Sua situação</span>
+            <textarea id="triRelato" rows="5" maxlength="1200" placeholder="Ex.: o que aconteceu, desde quando e o que você já tentou fazer."></textarea>
+          </label>
+          <p class="campo-rot">Há algum prazo correndo (audiência, intimação, data limite)?</p>
+          <div class="chips chips-p">
+            <label class="chip"><input type="radio" name="prazo" value="Sim"><span>Sim</span></label>
+            <label class="chip"><input type="radio" name="prazo" value="Não"><span>Não</span></label>
+            <label class="chip"><input type="radio" name="prazo" value="Não sei"><span>Não sei</span></label>
+          </div>
+          <p class="tri-aviso">Não envie documentos, senhas nem dados bancários por aqui. Nada do que você escreve fica guardado neste site: a mensagem só sai quando você envia.</p>
+          <div class="tri-acoes">
+            <button type="button" class="btn-volta" data-ir="1">Voltar</button>
+            <button type="button" class="btn btn-ouro" data-ir="3" id="tri2" disabled>Continuar <svg aria-hidden="true"><use href="#seta"/></svg></button>
+          </div>
+        </fieldset>
+
+        <fieldset class="tri-etapa" data-etapa="3">
+          <legend class="tri-perg">Como podemos chamar você?</legend>
+          <label class="campo">
+            <span class="campo-rot">Seu nome</span>
+            <input type="text" id="triNome" maxlength="80" autocomplete="name">
+          </label>
+          <p class="tri-resumo" id="triResumo"></p>
+          <div class="tri-acoes">
+            <button type="button" class="btn-volta" data-ir="2">Voltar</button>
+            <a class="btn btn-zap" id="triZap" href="https://wa.me/559186310721" target="_blank" rel="noopener" aria-disabled="true"><svg aria-hidden="true"><use href="#zap"/></svg>Enviar pelo WhatsApp</a>
+          </div>
+          <p class="tri-alt">Prefere e-mail? <a id="triEnviar" href="mailto:nakanorodriguesadv@gmail.com" aria-disabled="true">Enviar por e-mail</a></p>
+        </fieldset>
+
+        <div class="tri-etapa tri-fim" data-etapa="4">
+          <p class="tri-perg">Sua mensagem está pronta.</p>
+          <p class="sec-intro" id="triFimTexto">O WhatsApp abriu com a sua mensagem preenchida. É só conferir e tocar em enviar. Se não abriu, copie a mensagem e mande para <strong>(91) 98631-0721</strong>.</p>
+          <pre class="tri-msg" id="triMsg"></pre>
+          <div class="tri-acoes">
+            <button type="button" class="btn-volta" data-ir="3">Voltar</button>
+            <button type="button" class="btn btn-linha-escura" id="triCopiar">Copiar mensagem</button>
+            <a class="btn btn-zap" id="triZapDeNovo" href="https://wa.me/559186310721" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#zap"/></svg>Abrir de novo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · PERGUNTAS FREQUENTES -->
+  <section class="faq" id="perguntas">
+    <div class="sec-cabeca rv">
+      <p class="rotulo"><span class="num">05</span><span class="traco"></span>Perguntas</p>
+      <div>
+        <h2 class="titulo-grande">Perguntas <span class="t2">frequentes.</span></h2>
+      </div>
+    </div>
+    <div class="faq-corpo">
+      <aside class="faq-cartao rv">
+        <span class="faq-icone" aria-hidden="true"><svg><use href="#zap"/></svg></span>
+        <div>
+          <p class="faq-cartao-t">Não encontrou a sua pergunta?</p>
+          <a class="link-seta" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">Pergunte ao escritório pelo WhatsApp<svg aria-hidden="true"><use href="#seta"/></svg></a>
+        </div>
+      </aside>
+    <div class="faq-lista">
+      <details class="pergunta rv" name="faq">
+        <summary>Como começa o atendimento?<span class="area-mais" aria-hidden="true"></span></summary>
+        <p>Você conta a sua situação pelo site, pelo WhatsApp ou por e-mail. Lemos com atenção e respondemos indicando o que é preciso para avaliar o caso.</p>
+      </details>
+      <details class="pergunta rv" name="faq">
+        <summary>Vou saber em que pé está o meu caso?<span class="area-mais" aria-hidden="true"></span></summary>
+        <p>Sim. Explicamos os caminhos possíveis em linguagem simples e informamos você a cada etapa, com clareza sobre prazos e próximos passos, até a decisão final.</p>
+      </details>
+      <details class="pergunta rv" name="faq">
+        <summary>Como ficam os custos?<span class="area-mais" aria-hidden="true"></span></summary>
+        <p>Os custos são tratados diretamente com o escritório, depois de entender o seu caso, com a mesma clareza dos prazos e dos próximos passos.</p>
+      </details>
+      <details class="pergunta rv" name="faq">
+        <summary>O escritório pede pagamento por WhatsApp ou telefone?<span class="area-mais" aria-hidden="true"></span></summary>
+        <p>Não. O escritório nunca pede pagamentos, depósitos ou dados bancários por WhatsApp ou telefone. Na dúvida, confirme sempre pelo e-mail oficial: nakanorodriguesadv@gmail.com.</p>
+      </details>
+      <details class="pergunta rv" name="faq">
+        <summary>Onde o escritório atende e qual é o horário?<span class="area-mais" aria-hidden="true"></span></summary>
+        <p>Atendemos em Belém/PA, de segunda a sexta, das 8h às 18h. O local de cada atendimento é combinado com você ao marcar a conversa.</p>
+      </details>
+      <details class="pergunta rv" name="faq">
+        <summary>Em quais áreas o escritório atua?<span class="area-mais" aria-hidden="true"></span></summary>
+        <p>Tributário, Trabalhista, Cível, Direito do Servidor Público e Direito Administrativo. Se não souber em qual o seu caso se encaixa, escolha "Ainda não sei" na conversa.</p>
+      </details>
+    </div>
+    </div>
+  
+  </section>
+
+  <!-- ATENÇÃO A GOLPES -->
+  <section class="golpe bloco-escuro" aria-labelledby="golpeTitulo">
+    <div class="golpe-grade rv">
+      <div>
+        <p class="rotulo rotulo-claro"><span class="traco"></span>Segurança</p>
+        <h2 class="golpe-titulo" id="golpeTitulo">Atenção <span class="t2">a golpes.</span></h2>
+      </div>
+      <div class="golpe-texto">
+        <p class="golpe-forte">O escritório nunca pede pagamentos, depósitos ou dados bancários por WhatsApp ou telefone.</p>
+        <p>Recebeu uma mensagem em nome do escritório ou de um dos sócios? Confirme antes pelos canais oficiais.</p>
+        <ul class="golpe-dados">
+          <li><span>WhatsApp oficial</span>(91) 98631-0721</li>
+          <li><span>E-mail oficial</span>nakanorodriguesadv@gmail.com</li>
+          <li><span>Sociedade</span>OAB/PA nº 4146 · CNPJ 69.987.347/0001-76</li>
+        </ul>
+        <a class="link-seta link-claro" href="https://cna.oab.org.br/" target="_blank" rel="noopener">Consultar no Cadastro Nacional dos Advogados<svg aria-hidden="true"><use href="#seta"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="rod-grade">
+    <div class="rod-marca">
+      <svg class="marca-nr rod-nr" aria-hidden="true"><use href="#nr"/></svg>
+      <div>
+        <p class="rod-nome">Nakano &amp; Rodrigues</p>
+        <p class="rod-s">Sociedade de Advogados · OAB/PA nº 4146</p>
+      </div>
+    </div>
+    <div class="rod-col">
+      <p class="rod-t">Sócios</p>
+      <p>Vitor Nakano dos Reis · <span class="nw">OAB/PA nº 39.983</span></p>
+      <p>José Alberto Pinto da Costa Rodrigues Pereira · <span class="nw">OAB/PA nº 40.892</span></p>
+    </div>
+    <div class="rod-col">
+      <p class="rod-t">Atendimento</p>
+      <p>Belém/PA</p>
+      <p>Segunda a sexta, das 8h às 18h</p>
+      <p><a href="https://wa.me/559186310721" target="_blank" rel="noopener">WhatsApp (91) 98631-0721</a> · <a href="mailto:nakanorodriguesadv@gmail.com">nakanorodriguesadv@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="rod-golpe">
+    <p>Conteúdo de caráter informativo, em conformidade com o Provimento 205/2021 do Conselho Federal da OAB. Não substitui a análise do seu caso por um advogado.</p>
+    <p class="rod-cnpj">CNPJ 69.987.347/0001-76 · © 2026 Nakano &amp; Rodrigues Sociedade de Advogados · <a href="privacidade.html">Política de Privacidade</a></p>
+  </div>
+</footer>
+
+<a class="flutua" id="flutua" href="https://wa.me/559186310721?text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Nakano%20%26%20Rodrigues%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar com o escritório pelo WhatsApp"><svg aria-hidden="true"><use href="#zap"/></svg><span>WhatsApp</span></a>
+
+<script src="js/pagina.js"></script>
+</body>
 </html>
