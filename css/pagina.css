@@ -671,3 +671,21 @@ html.suave{scroll-behavior:auto}
 .pt-corpo p{margin:0;color:#3a3e42;line-height:1.7}
 .pt-corpo a{color:var(--dourado);text-underline-offset:3px}
 .rod-cnpj a{color:inherit;text-underline-offset:3px}
+
+/* ---------- abertura v5 (27/11): sem foto, monograma NR grande ---------- */
+.abre-grade{grid-template-columns:minmax(0,.56fr) minmax(0,.44fr)}
+.abre-nr{grid-column:2;justify-self:center;align-self:center;width:min(100%,440px);color:var(--branco)}
+.abre-nr svg{display:block;width:100%;height:auto;overflow:visible}
+.abre-nr .nr-fio{fill:var(--dourado)}
+@media (prefers-reduced-motion:no-preference){
+  .js .abre-nr .nr-n,.js .abre-nr .nr-r{clip-path:inset(100% 0 0 0);transition:clip-path 1.5s var(--curva) .2s}
+  .js .abre-nr .nr-r{transition-delay:.55s}
+  .js .abre-nr .nr-fio{transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);transition:transform 1.4s var(--curva) 1.1s}
+  .js .pronto .abre-nr .nr-n,.js .pronto .abre-nr .nr-r{clip-path:inset(0 0 0 0)}
+  .js .pronto .abre-nr .nr-fio{transform:none}
+}
+@media (max-width:1100px) and (orientation:portrait),(max-width:760px){
+  .abre-grade{grid-template-columns:1fr;padding-bottom:48px}
+  .abre-nr{grid-column:1;order:-1;justify-self:start;width:min(42%,190px);margin:4px 0 34px}
+}
+.socio .socio-forma p + p{margin-top:6px}

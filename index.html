@@ -72,11 +72,6 @@
   <!-- ABERTURA -->
   <section class="abre" id="inicio">
     <div class="abre-fundo" aria-hidden="true"></div>
-    <picture class="abre-foto-cena">
-      <source media="(max-width: 760px)" srcset="img/abertura-socios-cel.webp" width="1024" height="1024">
-      <img class="abre-cena" src="img/abertura-socios.webp" srcset="img/abertura-socios-900.webp 900w, img/abertura-socios.webp 1536w" sizes="100vw" width="1536" height="1024" alt="Os sócios Vitor Nakano dos Reis e José Alberto Pinto da Costa Rodrigues Pereira, sorrindo, no escritório" fetchpriority="high">
-    </picture>
-    <div class="abre-veu" aria-hidden="true"></div>
     <div class="abre-grade">
       <div class="abre-texto">
         <p class="rotulo rotulo-claro"><span class="traco"></span>Sociedade de Advogados · Belém/PA</p>
@@ -91,11 +86,14 @@
           <a class="btn btn-linha" href="#atuacao">Áreas de atuação</a>
         </div>
       </div>
+      <div class="abre-nr" aria-hidden="true">
+        <svg viewBox="40 40 1902 1176" focusable="false">
+          <path class="nr-l nr-n" d="M43 1213V43h116l649 984h7V43h105v1170H804L155 229h-6v984z"/>
+          <path class="nr-l nr-r" fill-rule="evenodd" d="M1283 43h387c110 7 168 137 168 305s-58 302-168 309h-168v5l436 517-40 34h-70L1395 702h-6v511h-106zM1389 149h281c40 11 62 101 62 199s-22 192-67 203h-276z"/>
+          <rect class="nr-b nr-fio" x="1081" y="43" width="41" height="1170"/>
+        </svg>
+      </div>
     </div>
-    <p class="abre-legenda">
-      <span class="leg leg-v"><span class="leg-cargo">Sócio</span><span class="leg-nome">Vitor Nakano dos Reis</span><span class="leg-oab">OAB/PA nº 39.983</span></span>
-      <span class="leg leg-j"><span class="leg-cargo">Sócio</span><span class="leg-nome">José Alberto Pinto da Costa Rodrigues Pereira</span><span class="leg-oab">OAB/PA nº 40.892</span></span>
-    </p>
   </section>
 
   <!-- APRESENTAÇÃO (texto acende com a rolagem) -->
@@ -242,7 +240,10 @@
           <h3 class="socio-nome">Vitor Nakano dos Reis</h3>
           <span class="socio-oab">OAB/PA nº 39.983</span>
         </div>
-        <p class="socio-bio">Pós-graduando em Direito Tributário pela PUC-SP e graduado pelo Centro Universitário do Estado do Pará (CESUPA).</p>
+        <div class="socio-bio socio-forma">
+          <p>Graduado pelo Centro Universitário do Estado do Pará.</p>
+          <p>Pós-graduando em Direito Tributário pela Pontifícia Universidade Católica de São Paulo.</p>
+        </div>
       </article>
 
       <article class="socio socio-2 rv">
@@ -254,7 +255,11 @@
           <h3 class="socio-nome">José Alberto Pinto da Costa Rodrigues Pereira</h3>
           <span class="socio-oab">OAB/PA nº 40.892</span>
         </div>
-        <p class="socio-bio">Especialista em Direito Público e em Processo Tributário pela Faculdade Líbano e graduado pela Universidade Federal do Pará (UFPA).</p>
+        <div class="socio-bio socio-forma">
+          <p>Graduado pela Universidade Federal do Pará.</p>
+          <p>Pós-graduado em Direito Público pela Faculdade Líbano.</p>
+          <p>Pós-graduado em Processo Tributário pela Faculdade Líbano.</p>
+        </div>
       </article>
     </div>
   </section>
